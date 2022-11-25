@@ -15,11 +15,11 @@ load_dotenv()
 
 Bot = Client(
     name="confess",
-    bot_token=os.environ.get("BOT_TOKEN", "5626754813:AAEQD6i4If1huN3Na_Fk5kF61phaTK5k7Wo"),
-    api_id=int(os.environ.get("API_ID", "23693414")),  # type: ignore
-    api_hash=os.environ.get("API_HASH", "7886b6a15d0a1a06c7feeaeeb6ad6210"),
+    bot_token=os.environ.get("BOT_TOKEN", "5910290961:AAGScXmdRpYOhvvJW18IA3ybg7aEchnQNjU"),
+    api_id=int(os.environ.get("API_ID", "14962060")),  # type: ignore
+    api_hash=os.environ.get("API_HASH", "b726ce690552a5707dd80294907f39e1"),
 )
-KR=-1001847941518
+KR=-1001685267425
 Start_text = """<i>Hallo! [Official Fantasy](https://t.me/officialfantasybot) akan membantumu untuk mengirimkan pesan secara anonim ke channel @fvconfess,Silakan Klik tombol <b>🔰 Menu 🔰</b> Untuk Melakunkan Menfes/Biro jodoh.
 
 Sebelum menggunakan silakan baca rules terlebih dahulu ya🥰</i>
@@ -132,7 +132,7 @@ async def home_ban(_, query: CallbackQuery):
                          ]
                        ),
                       ) 
-PVA=-1001847941518    
+PVA=-1001685267425    
 @Bot.on_callback_query(filters.regex("cbkritik"))
 async def cbkritik(client, query: CallbackQuery):
   await query.message.delete()  
@@ -145,7 +145,7 @@ async def cbkritik(client, query: CallbackQuery):
   await client.send_message(PVA, f"from {query.from_user.mention}\nisi : {kri.text}")
   await client.send_message(query.from_user.id, "Kritik kamu telah terkirim")
     
-LOG=-1001593451768
+LOG=-1001782660352
 
 @Bot.on_callback_query(filters.regex("cbconfess"))
 async def cbconfess(client, query: CallbackQuery):
@@ -178,3 +178,4 @@ async def cbconfess(client, query: CallbackQuery):
 
     
 Bot.run()
+
