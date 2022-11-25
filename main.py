@@ -19,12 +19,12 @@ Bot = Client(
     api_id=int(os.environ.get("API_ID", "14962060")),  # type: ignore
     api_hash=os.environ.get("API_HASH", "b726ce690552a5707dd80294907f39e1"),
 )
-KR=-1001685267425
-Start_text = """<i>Hallo! [Official Fantasy](https://t.me/officialfantasybot) akan membantumu untuk mengirimkan pesan secara anonim ke channel @fvconfess,Silakan Klik tombol <b>🔰 Menu 🔰</b> Untuk Melakunkan Menfes/Biro jodoh.
+KR=-1001782660352
+Start_text = """<i>Hallo! [Menfess 4Me](https://t.me/Menfess4Me_bot) akan membantumu untuk mengirimkan pesan secara anonim ke channel @PesertaGrup,Silakan Klik tombol <b>🔰 Menu 🔰</b> Untuk Melakunkan Menfes.
 
 Sebelum menggunakan silakan baca rules terlebih dahulu ya🥰</i>
 
-<b>Butuh bantuan? Hubungi</b> @phobiakaliann"""
+<b>Butuh bantuan? Hubungi</b> @Chat4Robot"""
 KONTOL = "https://telegra.ph/file/1075382996efe8d8dcb15.jpg"
 HOME_TEXT = """
 <b>📪 Confess - Untuk Confess.
@@ -50,14 +50,16 @@ async def start(_, update: Message):
         )
     )
     
-RULES_TEXT = """🗣️ RULES Official Fantasy
+RULES_TEXT = """📢 Peraturan Menfess 4Me
 
-❌ PROMOSI TANPA IZIN
-❌ UP 18+ TANPA IZIN
-❌ JUALAN TANPA IZIN
-❌ UP LINK TANPA IZIN
+1. dilarang dm berisikan hal yg mengundang war (bersifat menjatuhkan suatu fandom, grup, agama, suku maupun ras)
+2. dilarang mengirim menfess yang memuat data pribadi secara terang-terangan sekalipun data pribadi sendiri seperti nomor hp
+3. dilarang berjualan barang apapun
 
-🗣️ RESIKO AUTO BAN"""
+📢 Owner/Admin tidak akan ikut campur dan tau menau tentang menfess yang masuk serta tidak akan membeberkan siapa si pengirim menfess terkecuali kalau pengirim melanggar RULES yang sudah dibuat diatas dan akan mendapatkan kosekuensinya
+
+•PELANGGARAN RINGAN AKAN DITEGUR
+•PELANGGARAN BERAT AKAN DI POST DAN DI BLOK PERMANEN"""
 
 @Bot.on_callback_query(filters.regex("rules"))
 async def rulescb(_, query: CallbackQuery):
@@ -74,14 +76,11 @@ async def rulescb(_, query: CallbackQuery):
                        ),
                       )  
 PENJELASAN_TEXT = """
-<b>APA ITU MENFESS?</b>
-📝 Berdasarkan penelusuran di media sosial, istilah menfess kerap digunakan ketika seseorang ingin mengungkapkan sesuatu kepada orang lain atau semua orang secara anonim
+<b>Apa Itu Menfess ?</b>
+<b>•</b> Menfess adalah singkatan dalam bahasa Inggris dari "mention confess" yang memiliki makna kurang lebih "surat kaleng" atau "pesan anonim".
 
-<b>APA ITU BIRO JODOH?</b>
-📝 Berdasarkan Kamus besar, istilah biro jodoh adalah badan usaha jasa untuk menjodohkan pria atau wanita.
-
-<b>APA ITU KRITIK?</b>
-📝 Kritik itu adalah kecaman atau tanggapan, kadang-kadang disertai uraian dan pertimbangan baik buruk thd suatu hasil karya, pendapat, dsb; (nomina).
+<b>Apa Itu Kritik ?</b>
+<b>•</b> Kritik itu adalah kecaman atau tanggapan, kadang-kadang disertai uraian dan pertimbangan baik buruk terhadap suatu hasil karya, pendapat, dan sebagainya.
 """
 @Bot.on_callback_query(filters.regex("penjelasan"))
 async def penjelasan(_, query: CallbackQuery):
@@ -132,7 +131,7 @@ async def home_ban(_, query: CallbackQuery):
                          ]
                        ),
                       ) 
-PVA=-1001685267425    
+PVA=-1001782660352    
 @Bot.on_callback_query(filters.regex("cbkritik"))
 async def cbkritik(client, query: CallbackQuery):
   await query.message.delete()  
@@ -145,7 +144,7 @@ async def cbkritik(client, query: CallbackQuery):
   await client.send_message(PVA, f"from {query.from_user.mention}\nisi : {kri.text}")
   await client.send_message(query.from_user.id, "Kritik kamu telah terkirim")
     
-LOG=-1001782660352
+LOG=-1001685267425
 
 @Bot.on_callback_query(filters.regex("cbconfess"))
 async def cbconfess(client, query: CallbackQuery):
@@ -160,7 +159,7 @@ async def cbconfess(client, query: CallbackQuery):
     if "/" in tujuan.text:
         to = await client.ask(user_id, '<b>⚠️ Terjadi kesalahan.</b>\n__Ketik nama crush kamu__', filters=filters.text, timeout=30)
         if "/" in to.text:
-            return await client.send_message(user_id, 'Sepertinya anda masih tolol silakan bertanya kepada @phobiakaliann')
+            return await client.send_message(user_id, 'Sepertinya anda masih bodoh, silakan bertanya kepada @Chat4Robot')
         else:
             to = to
     else:
@@ -171,8 +170,8 @@ async def cbconfess(client, query: CallbackQuery):
     else:
         confesss = isi
     report = await client.send_message(LOG, f"<b>From :</b> <i>{nama}</i>\n<b>To :</b> <i>{to.text}</i>\n<b>Isi :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
-    await client.send_message(user_id, f"✅ **Sudah terkirim**", 
-                              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ View", url=f"https://t.me/fvconfess/{report.id}")]]),
+    await client.send_message(user_id, f"Terima kasih telah menggunakan bot ini, pesan Anda akan segera dikirim.", 
+                              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/PesertaGrup/{report.id}")]]),
                               disable_web_page_preview=True,
                              )
 
