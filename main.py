@@ -144,7 +144,7 @@ async def cbkritik(client, query: CallbackQuery):
   await client.send_message(PVA, f"from {query.from_user.mention}\nisi : {kri.text}")
   await client.send_message(query.from_user.id, "Kritik kamu telah terkirim")
     
-LOG=-1001685267425
+LOG=-1001874589177
 
 @Bot.on_callback_query(filters.regex("cbconfess"))
 async def cbconfess(client, query: CallbackQuery):
