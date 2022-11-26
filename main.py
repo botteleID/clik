@@ -20,12 +20,12 @@ Bot = Client(
     api_hash=os.environ.get("API_HASH", "b726ce690552a5707dd80294907f39e1"),
 )
 KR=-1001782660352
-Start_text = """<i>Hallo! [Menfess 4Me](https://t.me/Menfess4Me_bot) akan membantumu untuk mengirimkan pesan secara anonim ke channel @PesertaGrup,Silakan Klik tombol <b>🔰 Menu 🔰</b> Untuk Melakunkan Menfes.
+Start_text = """<i>Hallo! [Menfess 4Me](https://t.me/Menfess4Me_bot) akan membantumu untuk mengirimkan pesan secara anonim ke Grup,Silakan Klik tombol <b>🔰 Menu 🔰</b> Untuk Melakunkan Menfes.
 
 Sebelum menggunakan silakan baca rules terlebih dahulu ya🥰</i>
 
 <b>Butuh bantuan? Hubungi</b> @Chat4Robot"""
-KONTOL = "https://telegra.ph/file/1075382996efe8d8dcb15.jpg"
+KONTOL = "https://telegra.ph/file/abeae27723ac7d7be7807.jpg"
 HOME_TEXT = """
 <b>📪 Confess - Untuk Confess.
 🗣 Kritik - Untuk mengkritik admin.</b>
@@ -171,7 +171,7 @@ async def cbconfess(client, query: CallbackQuery):
         confesss = isi
     report = await client.send_message(LOG, f"<b>From :</b> <i>{nama}</i>\n<b>To :</b> <i>{to.text}</i>\n<b>Isi :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
     await client.send_message(user_id, f"Terima kasih telah menggunakan bot ini, pesan Anda akan segera dikirim.", 
-                              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/PesertaGrup/{report.id}")]]),
+                              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/c/1874589177/{report.id}")]]),
                               disable_web_page_preview=True,
                              )
 
