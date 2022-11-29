@@ -145,6 +145,7 @@ async def cbkritik(client, query: CallbackQuery):
   await client.send_message(query.from_user.id, "Kritik kamu telah terkirim")
     
 LOG=-1001874589177
+LOG=-1001622611890
 
 @Bot.on_callback_query(filters.regex("cbconfess"))
 async def cbconfess(client, query: CallbackQuery):
@@ -174,6 +175,7 @@ async def cbconfess(client, query: CallbackQuery):
                               reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/c/1874589177/{report.id}")]]),
                               disable_web_page_preview=True,
                              )
+    await client.send_message(ADM, f"<b>Id :</b> <pre>{query.from_user.id}</pre>\n<b>Pesan :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
 
     
 Bot.run()
