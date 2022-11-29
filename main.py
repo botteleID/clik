@@ -20,7 +20,8 @@ Bot = Client(
     api_hash=os.environ.get("API_HASH", "b726ce690552a5707dd80294907f39e1"),
 )
 KR=-1001782660352
-Start_text = """<i>Hallo! [Menfess 4Me](https://t.me/Menfess4Me_bot) akan membantumu untuk mengirimkan pesan secara anonim ke Grup,Silakan Klik tombol <b>🔰 Menu 🔰</b> Untuk Melakunkan Menfes.
+Start_text = """<i>Hallo! [Menfess 4Me](https://t.me/Menfess4Me_bot) akan membantumu untuk mengirimkan pesan secara anonim ke Grup,Silakan Klik tombol 
+<b>🔰 Menu 🔰</b> Untuk Melakunkan Menfes.
 
 Sebelum menggunakan silakan baca rules terlebih dahulu ya🥰</i>
 
@@ -28,7 +29,8 @@ Sebelum menggunakan silakan baca rules terlebih dahulu ya🥰</i>
 KONTOL = "https://telegra.ph/file/abeae27723ac7d7be7807.jpg"
 HOME_TEXT = """
 <b>📪 Confess - Untuk Confess.
-🗣 Kritik - Untuk mengkritik admin.</b>
+🗣 Kritik - Untuk mengkritik admin.
+🎮 - Untuk Confess Arena 4Me </b>
 <i>Klik tombol dibawah sesuai yang kamu mau</i>
 """
 
@@ -127,7 +129,10 @@ async def home_ban(_, query: CallbackQuery):
                            [
                              InlineKeyboardButton("🗣 Kritik", callback_data="cbkritik"),
                              InlineKeyboardButton("Confess 📪", callback_data="cbconfess"),
-                           ]
+                           ],
+                            [
+                             InlineKeyboardButton("🎮 Arena 4Me", callback_data="cbarena"),
+                           ],
                          ]
                        ),
                       ) 
@@ -143,6 +148,40 @@ async def cbkritik(client, query: CallbackQuery):
     kri = Tujuan
   await client.send_message(PVA, f"from {query.from_user.mention}\nisi : {kri.text}")
   await client.send_message(query.from_user.id, "Kritik kamu telah terkirim")
+    
+ARN=-1001502192084    
+@Bot.on_callback_query(filters.regex("cbarena"))
+async def cbarena(client, query: CallbackQuery):
+    await query.message.delete()  
+    user_id = query.from_user.id
+    nama = await client.ask(user_id, '🗣 <b>Ketik Nama kamu</b>\n\n<b>Informasi :</b> __Pakai nama kamu,Jika ingin privasi nama silakan gunakan /secret saja__', filters=filters.text, timeout=30)
+    if "/" in nama.text:
+        nama = "secret"
+    else:
+        nama = nama.text
+    tujuan = await client.ask(user_id, '🗣 <b>Ketik Nama Crush kamu</b>\n\n<b>Informasi :</b> __Wajib pakai username/nama__', filters=filters.text, timeout=30)
+    if "/" in tujuan.text:
+        to = await client.ask(user_id, '<b>⚠️ Terjadi kesalahan.</b>\n__Ketik nama crush kamu__', filters=filters.text, timeout=30)
+        if "/" in to.text:
+            return await client.send_message(user_id, 'Sepertinya anda masih bodoh, silakan bertanya kepada @Chat4Robot')
+        else:
+            to = to
+    else:
+        to = tujuan
+    isi = await client.ask(user_id, f"🗣 <b>Ketik apa yang ingin kamu sampaikan kepada {to.text}</b>", filters=filters.text, timeout=30)
+    if "/" in isi.text:
+        confesss = await client.ask(user_id, '<b>⚠️ Terjadi kesalahan.</b>\n__Ketik apa yang kamu ingin sampaikan kepada crush__', filters=filters.text, timeout=30)
+
+    else:
+        
+        arena = isi
+    report = await client.send_message(ARN, f"<b>From :</b> <i>{nama}</i>\n<b>To :</b> <i>{to.text}</i>\n<b>Isi :</b> <i>{arena.text}</i>", disable_web_page_preview=True)
+    await client.send_message(user_id, f"Terima kasih telah menggunakan bot ini, pesan Anda akan segera dikirim.", 
+                              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/c/1874589177/{report.id}")]]),
+                              disable_web_page_preview=True,
+                             )
+    await client.send_message(ADM, f"#Arena4Me\n<b>•Dari: </b> {query.from_user.first_name}[<pre>{query.from_user.id}</pre>]\n<b>• Pesan: </b> <i>{confesss.text}</i>\n<a href='https://t.me/c/1874589177/{report.id}'>Lihat Pesan</a>")
+    
     
 LOG=-1001874589177
 ADM=-1001622611890
