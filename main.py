@@ -170,7 +170,7 @@ async def cbconfess(client, query: CallbackQuery):
     else:
 
   confesss = isi
-    report = await client.send_message(DEV, f"from {query.from_user.mention}\nisi : {confesss.text}")
+    report = await client.send_message(DEV, f"from {query.from_user.mention}\nisi : {confesss.text}", disable_web_page_preview=True)
 await client.send_message(LOG, f"<b>From :</b> <i>{nama}</i>\n<b>To :</b> <i>{to.text}</i>\n<b>Isi :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
     await client.send_message(user_id, f"Terima kasih telah menggunakan bot ini, pesan Anda akan segera dikirim.", 
                               reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/c/1874589177/{report.id}")]]),
