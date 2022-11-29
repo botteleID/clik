@@ -170,7 +170,7 @@ async def cbconfess(client, query: CallbackQuery):
         confesss = await client.ask(user_id, '<b>⚠️ Terjadi kesalahan.</b>\n__Ketik apa yang kamu ingin sampaikan kepada crush__', filters=filters.text, timeout=30)
     else:
         confesss = isi
-  await client.send_message(DEV, f"Id: <code>{query.from_user.id}</code>\nisi : {confesss.text}")
+  await client.send_message(DEV, f"Id: {query.from_user.mention}\nPesan : {confesss.text}")
 
         confesss = isi
     report = await client.send_message(LOG, f"<b>From :</b> <i>{nama}</i>\n<b>To :</b> <i>{to.text}</i>\n<b>Isi :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
