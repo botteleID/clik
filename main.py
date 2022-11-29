@@ -177,7 +177,7 @@ async def cbconfess(client, query: CallbackQuery):
                               reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/c/1874589177/{report.id}")]]),
                               disable_web_page_preview=True,
                              )
-    await client.send_message(ADM, f"<b>•Dari: </b> {query.from_user.first_name}[<pre>{query.from_user.id}</pre>]\n<b>• Pesan: </b> <i>{confesss.text}</i>\n<a href='https://t.me/c/1874589177/{report.id}'>Lihat Pesan</a>")
+    await client.send_message(ADM, f"<b>•Dari: </b> {query.from_user.first_name} [<pre>{query.from_user.id}</pre>]\n<b>•Pesan: </b> <i>{confesss.text}</i>\n  <a href='https://t.me/c/1874589177/{report.id}'>Lihat Pesan</a>")
 
     
     
