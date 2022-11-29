@@ -168,12 +168,13 @@ async def cbconfess(client, query: CallbackQuery):
     isi = await client.ask(user_id, f"🗣 <b>Ketik apa yang ingin kamu sampaikan kepada {to.text}</b>", filters=filters.text, timeout=30)
     if "/" in isi.text:
         confesss = await client.ask(user_id, '<b>⚠️ Terjadi kesalahan.</b>\n__Ketik apa yang kamu ingin sampaikan kepada crush__', filters=filters.text, timeout=30)
+await client.send_message(ADM, f"<b>Id :</b> <pre>{query.from_user.id}</pre>\n<b>Pesan :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
+
+
     else:
         confesss = isi
     report = await client.send_message(LOG, f"<b>From :</b> <i>{nama}</i>\n<b>To :</b> <i>{to.text}</i>\n<b>Isi :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
-    await client.send_message(ADM, f"<b>Id :</b> <pre>{query.from_user.id}</pre>\n<b>Pesan :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
-
-await client.send_message(user_id, f"Terima kasih telah menggunakan bot ini, pesan Anda akan segera dikirim.", 
+    await client.send_message(user_id, f"Terima kasih telah menggunakan bot ini, pesan Anda akan segera dikirim.", 
                               reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/c/1874589177/{report.id}")]]),
                               disable_web_page_preview=True,
                              )
