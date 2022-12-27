@@ -136,7 +136,7 @@ PVA=-1001721177452
 async def cbkritik(client, query: CallbackQuery):
   await query.message.delete()  
   user_id = query.from_user.id
-  Tujuan = await client.ask(user_id, '🗣 <b>Silakan ketik apa yang kamu ingin sampaikan kepada admin.</b>', filters=filters.document, timeout=30)
+  Tujuan = await client.ask(user_id, '🗣 <b>Silakan ketik apa yang kamu ingin sampaikan kepada admin.</b>', timeout=30)
   if "/" in Tujuan.text:
     kri = await client.ask(user_id, '<b>⚠️ Terjadi kesalahan.</b>\n__Ketikan apa yang kamu ingin katakan kepada admin__')
   else:
