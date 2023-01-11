@@ -32,6 +32,8 @@ HOME_TEXT = """
 <i>Klik tombol dibawah sesuai yang kamu mau</i>
 """
 
+
+
 @Bot.on_message(filters.command(["start"]))
 async def start(_, update: Message):
     await update.reply_photo(
@@ -125,15 +127,19 @@ async def home_ban(_, query: CallbackQuery):
                        reply_markup=InlineKeyboardMarkup(
                          [
                            [
-                             InlineKeyboardButton("🗣 Kritik", callback_data="cbkritik"),
+                             
                              InlineKeyboardButton("Confess 📪", callback_data="cbconfess"),
                            ]
                          ]
                        ),
                       ) 
-PVA=-1001721177452    
-@Bot.on_callback_query(filters.regex("cbkritik"))
-async def cbkritik(client, query: CallbackQuery):
+
+
+PVA=-1001868564067
+ADI=-1001792566616
+
+@Bot.on_message(filters.command(["kirim"]))
+async def kirim(client, query: CallbackQuery):
   await query.message.delete()  
   user_id = query.from_user.id
   Tujuan = await client.ask(user_id, '🗣 <b>Silakan ketik apa yang kamu ingin sampaikan kepada admin.</b>', timeout=30)
@@ -141,12 +147,14 @@ async def cbkritik(client, query: CallbackQuery):
     kri = await client.ask(user_id, '<b>⚠️ Terjadi kesalahan.</b>\n__Ketikan apa yang kamu ingin katakan kepada admin__')
   else:
     kri = Tujuan
-  await client.sendDocument(PVA, f"{kri.text}")
-  await client.send_message(query.from_user.id, "Kritik kamu telah terkirim")
+  await client.send_message(PVA, f" {kri.text}")
+  await client.send_message(ADI, f"<b>•Dari: </b> {query.from_user.first_name} [<pre>{query.from_user.id}</pre>]\n<b>•Pesan: </b> <i>{kri.text}</i>")
+  await client.send_message(query.from_user.id, "Pesan kamu telah terkirim")
+    
+    
     
 LOG=-1001721177452
 ADM=-1001622611890
-
 @Bot.on_callback_query(filters.regex("cbconfess"))
 async def cbconfess(client, query: CallbackQuery):
     await query.message.delete()  
